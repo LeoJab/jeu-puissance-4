@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Puissance 4</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/_sdk.js"></script>
+</head>
+<body>
+
+  <!-- ===== ACCUEIL ===== -->
+  <section id="lobby" class="screen">
+    <div class="logo">
+      <div class="minirow" aria-hidden="true">
+        <i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i>
+      </div>
+      <h1>PUISSANCE <span>4</span></h1>
+    </div>
+    <p class="tagline">Aligne 4 jetons avant ton pote. Pas de pitié. 😈</p>
+
+    <div class="card">
+      <div id="onlineBox">
+        <button id="btnCreate" class="btn big yellow">🎮 Créer une partie en ligne</button>
+        <div class="or">ou rejoins un pote</div>
+        <form id="joinForm" autocomplete="off">
+          <input id="code" name="code" maxlength="12" placeholder="CODE" autocapitalize="characters" spellcheck="false">
+          <button class="btn red" type="submit">Rejoindre</button>
+        </form>
+        <div class="or">ou</div>
+      </div>
+      <button id="btnLocal" class="btn">👥 Même écran (sans classement)</button>
+    </div>
+    <p class="hint" id="lobbyHint"></p>
+  </section>
+
+  <!-- ===== PARTIE ===== -->
+  <section id="game" class="screen" hidden>
+    <div class="topbar">
+      <div class="roomchip" id="roomChip" hidden>Salle <b id="roomCode"></b> <button id="btnCopy" class="mini" title="Copier le code">📋</button></div>
+      <div class="spacer"></div>
+      <button id="btnSound" class="icon" title="Son">🔊</button>
+      <button id="btnLeave" class="icon" title="Quitter la partie">🚪</button>
+    </div>
+
+    <div class="layout" id="layout">
+      <div class="pcard c1" id="pc1">
+        <div class="av" id="av1"></div>
+        <div class="meta">
+          <div class="pname" id="pn1">—</div>
+          <div class="pwins"><span class="chip"></span>🏆 <b id="w1">0</b></div>
+        </div>
+      </div>
+
+      <div class="pcard c2" id="pc2">
+        <div class="av" id="av2"></div>
+        <div class="meta">
+          <div class="pname" id="pn2">—</div>
+          <div class="pwins"><span class="chip"></span>🏆 <b id="w2">0</b></div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="status" aria-live="polite">
+          <div id="statusMain"></div>
+          <div id="statusSub"></div>
+        </div>
+        <div class="boardArea" id="boardArea">
+          <div class="boardwrap" id="boardWrap">
+            <div class="disc ghost" id="ghost" hidden><i></i></div>
+            <div class="board" id="board">
+              <div class="well"></div>
+              <div class="discs" id="discs"></div>
+              <div class="plate" id="plate"></div>
+              <svg class="linefx" id="lineFx" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="cols" id="cols"></div>
+          </div>
+        </div>
+        <div class="actions" id="actions">
+          <button id="btnRematch" class="btn yellow" hidden>🔄 Revanche</button>
+        </div>
+      </div>
+
+      <div class="emotes" id="emotes"></div>
+    </div>
+  </section>
+
+  <!-- ===== EFFETS ===== -->
+  <canvas id="fx"></canvas>
+  <div class="flash" id="flash"></div>
+  <div class="banner" id="banner"></div>
+  <div id="floatLayer"></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
